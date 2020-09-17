@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>Impresion</title>
+<script type="text/javascript">
+        function sumar(y){
+            x = parseFloat(y)
+            counter = counter + x;
+        }
+        function check() {
+    document.getElementById("checkk").checked = true;
+}
+    </script>
+<head>
+    <style>
+        @media print
+        {
+            div{
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+<br>
+<br>
+<br>
+<h1 align="center">Los pedidos a repartir son:</h1>
+{% for comp in compradores %}
+<div>
+<h2>{{ comp.nombre}} {{comp.apellido }}</h2>
+    {% if comp.detalle == "" %}
+    <h3 style="margin-left: 50px" align="left">Direccion: {{comp.direccion}} &nbsp;&nbsp; Celular:{{comp.celular}}</h3>
+    {% else %}
+<h3 style="margin-left: 50px" align="left">Direccion: {{comp.direccion}} &nbsp;&nbsp; Celular:{{comp.celular}}  &nbsp;&nbsp; Detalle: {{comp.detalle}}</h3>
+    {% endif %}
+    <h2 style="margin-left: 100px;">Pedido:</h2>
+    <script>var counter = 0.0;</script>
+    {% for ped in pedidos %}
+    {% if comp == ped.comprador %}
+    <script>
+        x = "{{ped.pu}}".replace(",", ".");
+        sumar(x);
+    </script>
+<h3 align="left" style="margin-left: 210px"> "{{ ped.pedido }}" Cantidad: {{ped.cant}} &nbsp; ${{ped.pu}}</h3>
+{% endif %}
+{% endfor %}
+<h2 align="center">Total: $<script>document.write(counter.toFixed(2));</script></h2>
+
+</div>
+{% endfor %}
+<input type="button" class="btn btn-success" onclick="this.style.display = 'none'; getElementById('homeButton').style.display = 'none'; window.print(); this.style.display = 'inline'; getElementById('homeButton').style.display = 'inline';" value="Imprimir">
+<a class="btn btn-primary" id='homeButton' href="/">Home</a>
+</body>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>Impresion</title>
+<body>
+<br>
+<br>
+<br>
+<h1 align="center">Se pidieron:</h1>
+{% for ped in pedidos %}
+<br>
+<br>
+<h2 align="center"> "{{ ped.pedido }}" cantidad: {{ped.cant}}</h2>
+{% endfor %}
+<br>
+<input type="button" class="btn btn-success" onclick="this.style.display = 'none'; getElementById('homeButton').style.display = 'none'; window.print(); this.style.display = 'inline'; getElementById('homeButton').style.display = 'inline';" value="Imprimir">
+<a class="btn btn-primary" id='homeButton' href="/">Home</a>
+</body>
+{% endblock %}

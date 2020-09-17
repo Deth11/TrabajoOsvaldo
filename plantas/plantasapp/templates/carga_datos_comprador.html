@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>Cargar Datos</title>
+<body>
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <br>
+        <h2> Registrar Comprador</h2>
+        <br>
+        <form method="POST">
+            {% csrf_token %}
+  <label>Nombre y Apellido</label>
+  <div class="row">
+            <div class="input-group col">
+  <input type="text" aria-label="First name" required name="nombre" class="form-control">
+  </div>
+            <div class="input-group col">
+  <input type="text" aria-label="Last name" required name="apellido" class="form-control">
+</div>
+                </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Direccion</label>
+    <input class="form-control" required id="exampleFormControlTextarea1" name="dir">
+  </div>
+            <div class="form-group">
+                <label for="IntegerArea1">Celular</label>
+
+                <input class="form-control" required="" max="9999999999" min="1100000000" type="number" id="IntegerArea1" oninvalid="this.setCustomValidity('Ingresa un numero correcto')" onchange="this.setCustomValidity('')" name="cel">
+            </div>
+            <div class="form-group">
+                <label for="detalle">Detalle</label>
+                <input class="form-control" id="detalle" name="detalle" placeholder="Ej: Rejas negras, porton de madera, etc">
+                <input hidden name="comprador" value={{ comprador }}>
+            </div>
+        <button type="submit" class="btn btn-primary" >Continuar</button>
+            <a class="btn btn-warning" href="/">Volver</a>
+        </form>
+    </div>
+</div>
+</body>
+{% endblock %}

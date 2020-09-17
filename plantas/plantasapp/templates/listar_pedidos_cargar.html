@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>Listar Pedidos</title>
+<body>
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <br>
+        <h2 align="center">Listado de Pedidos</h2>
+        <br>
+    </div>
+</div>
+<form method="POST">
+    {% csrf_token %}
+    {% for ped in pedidos %}
+<div class="row" align="center">
+    <div class="col form-check">
+        <input type="hidden"  name={{ ped.pk }} value="no">
+        <input type="checkbox" class="form-check-input" id="checkk" value="yes" name= {{ped.pk}}>
+        <label class="form-check-label" for="checkk">"{{ped.pedido}}" Cant: {{ped.cant}}</label>
+    </div>
+</div>
+{% endfor %}
+    <br>
+    <br>
+    <input type="submit" value="A Imprimir" class="btn btn-primary">
+    <a class="btn btn-warning" href="/">Volver</a>
+</form>
+</body>
+
+{% endblock %}

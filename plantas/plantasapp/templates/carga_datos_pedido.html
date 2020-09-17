@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<title>Cargar Datos</title>
+<body>
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <br>
+        <h2> Registrar Pedido</h2>
+        <br>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-9">
+                    <label for="inlineFormInput">Pedido</label>
+                    <input type="text" name="pedido" class="form-control" id="inlineFormInput">
+                </div>
+                <div class="col-3">
+                    <label for="inlineFormInput2">Cant</label>
+                    <input type="number" min="0" value="1" name="cantidad" class="form-control" id="inlineFormInput2">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-auto">
+                    <label for="precio">Precio Unitario</label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">$</div>
+                        </div>
+                        <input type="number" step="0.01" class="form-control" name="precioUnitario" id="precio">
+                        <input type="hidden" step="0.01" name="precioTotal" readonly class="form-control-plaintext" value={{ precioTotal }}>
+                    </div>
+                    <input type="text" readonly class="form-control-plaintext" value="Precio Total: $ {{ precioTotal }} ">
+                    <input hidden name="comprador" value={{ comprador }}>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar Pedido</button>
+            <a class="btn btn-danger" href="/">Finalizar</a>
+        </form>
+</div>
+</body>
+{% endblock %}

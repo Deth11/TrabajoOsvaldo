@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<title> PlantasApp </title>
+<div class="col-md-5 mx-auto">
+
+<br>
+
+<h3>Seleccione una operacion</h3>
+
+<br>
+
+<style>
+.list-group a{text-align:center;}
+h3 {text-align:center;}
+</style>
+
+    <div class="list-group col-md-8 mx-auto">
+        <a class="list-group-item list-group-item-action list-group-item-info" href="/cargaDatos" role="button">Registrar Pedidos</a>
+        <a class="list-group-item list-group-item-action list-group-item-success" href="/listarPedidosNecesarios" role="button">Imprimir Pedidos A Conseguir</a>
+        <a class="list-group-item list-group-item-action list-group-item-warning" href="/listarPedidosRepartir" role="button">Imprimir Pedidos A Repartir</a>
+        <a class="list-group-item list-group-item-action list-group-item-secondary" href="/listarPedidosCargar" role="button">Imprimir Pedidos A Cargar</a>
+        <a class="list-group-item list-group-item-action list-group-item-danger" href="/admin/plantasapp" role="button">Modificar Pedidos</a>
+
+</div>
+
+</div>
+
+<br>
+
+{% endblock %}
